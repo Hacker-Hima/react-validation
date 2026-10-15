@@ -6,31 +6,33 @@ function App(){
   const [email,setemail]=useState("")
   const [pass,setpass]=useState("")
   const [user,setusers]=useState([])
+  const [otp,setotp]=useState("")
 
   function check(){
     if(name===""||email===""||pass===""){
       alert("must enter all all details")
       return
     }
-
     else{
     if(pass !== "pass123@"){
       alert("invalid password")
       return
     }
-      if(pass !== "pass123@"){
-      alert("invalid password")
+    if(otp !== "8870"){
+      alert("otp is invalid")
       return
     }
     setusers([...user,{
       name:name,
       email:email,
-      pass:pass
+      pass:pass,
+      otp:otp
     }])
   }
     setname("")
     setemail("")
     setpass("")
+    setotp("")
   }
 
   return(
@@ -60,6 +62,16 @@ function App(){
         value={pass}
         onChange={(e)=>setpass(e.target.value)}
         minLength={"8"}
+        required
+      />
+      <br></br>
+      Enter OTP:
+      <br></br>
+      <input 
+        type="text"
+        value={otp}
+        onChange={(e)=>setotp(e.target.value)}
+        minLength={"4"}
         required
       />
       <br></br>
